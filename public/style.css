@@ -1,0 +1,256 @@
+body {
+  margin: 0;
+  background-color: rgb(209, 209, 209);
+}
+
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0;
+  overflow: hidden;
+  background-color: #333;
+  margin-bottom: 1em;
+}
+
+ul.navbar li {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}
+
+
+ul.navbar li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: Roboto, Helvetica, sans-serif;
+  
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.button{
+  color: white;
+  background-color: #444;
+  padding: 1em;
+  border: 1px white solid;
+  border-radius: 5px;
+  margin: 0 10px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: Roboto, Helvetica, sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 73%;
+  transform: translate(220%, -50%);
+}
+
+.button:hover{
+  background-color: #777;
+  cursor: pointer;
+}
+
+
+.synth-container {
+  height:36em;
+  width:56.2em;
+  margin: auto;
+  padding:1em 1em 0 1em;
+  position: relative;
+  border:1px solid #160801;
+  border-radius: 1em;
+  background:linear-gradient(to bottom right,rgba(22, 22, 22, 0.3),rgba(27, 26, 26, 0));
+  box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)
+}
+
+li {
+  margin:0;
+  padding:0;
+  list-style:none;
+  position:relative;
+  float:left
+}
+
+ul .white {
+  height:12em;
+  width:3em;
+  z-index:1;
+  border-left:1px solid #bbb;
+  border-bottom:1px solid #bbb;
+  border-radius:0 0 5px 5px;
+  box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
+  background:linear-gradient(to bottom,#eee 0%,#fff 100%)
+}
+
+ul .white:active {
+  border-top:1px solid #777;
+  border-left:1px solid #999;
+  border-bottom:1px solid #999;
+  box-shadow:2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+  background:linear-gradient(to bottom,#fff 0%,#e9e9e9 100%)
+}
+
+.white.pressed{
+  border-top:1px solid #777;
+  border-left:1px solid #999;
+  border-bottom:1px solid #999;
+  box-shadow:2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+  background:linear-gradient(to bottom,#fff 0%,#e9e9e9 100%)
+}
+
+.black {
+  height:6em;
+  width:1.5em;
+  margin:0 0 0 -1em;
+  z-index:2;
+  border:1px solid #000;
+  border-radius:0 0 3px 3px;
+  box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5);
+  background:linear-gradient(45deg,#222 0%,#555 100%)
+}
+
+.black:active {
+  box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
+  background:linear-gradient(to right,#444 0%,#222 100%)
+}
+
+.black.pressed{
+  box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
+  background:linear-gradient(to right,#444 0%,#222 100%)
+}
+
+.a1,.g1,.d1,.e1,.b1,.a2,.g2,.d2,.e2,.b2,.a3,.g3,.d3,.e3,.b3,.d4{
+  margin:0 0 0 -1em
+}
+.f1,.c2,.f2,.c3,.f3,.c4{
+  margin: 0 0 0 -0.5em
+}
+
+ul li:first-child {
+  border-radius:5px 0 5px 5px;
+}
+
+ul li:last-child {
+  border-radius:0 5px 5px 5px
+}
+
+.knobs{
+  width: 100%;
+  height: 20em;
+  background-color: #555;
+  border-radius: 1em 1em 0em 0;
+}
+
+.keyboard {
+  width: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.key {
+  cursor: pointer;
+  font: 16px "Open Sans", "Lucida Grande", "Arial", sans-serif;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 20px;
+  height: 80px;
+  text-align: center;
+  box-shadow: 2px 2px darkgray;
+  display: inline-block;
+  position: relative;
+  margin-right: 3px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.key div {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  pointer-events: none;
+}
+
+.key div sub {
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.key:hover {
+  background-color: #eef;
+}
+
+.key:active {
+  background-color: #000;
+  color: #fff;
+}
+
+.octave {
+  display: inline-block;
+  padding: 0 6px 0 0;
+}
+  
+.osc {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+  margin: 0.5em;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0.2em;
+  overflow: hidden;
+  float: left;
+}
+
+.osc > * {
+  flex: 0 0 20%;
+  padding: 0.2em 0.5em;
+}
+
+.osc select, input {
+  width: 100%;
+}
+
+
+.cell {
+  width: 50%;
+  padding: 0.2em;
+}
+
+.filter {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 25%;
+  margin: 1em;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0.2em;
+  overflow: hidden;
+  float: left;
+}
+
+.enveloppe {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 30%;
+  margin: 1em;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0.2em;
+  overflow: hidden;
+  float: left;
+}

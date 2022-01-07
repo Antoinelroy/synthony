@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <script type="text/javascript" src="synth.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyAmY_lwi_nmWP751q3LjhEMg9C0O92M6Bo",
+              authDomain: "synthony-f1697.firebaseapp.com",
+              projectId: "synthony-f1697",
+              storageBucket: "synthony-f1697.appspot.com",
+              messagingSenderId: "388694140897",
+              appId: "1:388694140897:web:907d563638b149049e94a0",
+              measurementId: "G-QPKMPR875C"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+          </script>
+    </head>
+    <body>
+        <ul class="navbar">
+            <li>
+                <a class="navbar-brand">Synthony</a>
+                
+                <a class="button" onclick="saveSound()">Save sound</a>
+                <a class="button" onclick="login()">Log in</a>
+            </li>
+        </ul>
+        <div>
+            
+            <div>
+                <ul class="synth-container">
+                <div class="knobs">
+                    <fieldset class="osc">
+                        <legend>Oscillator 1</legend>
+                        <div>
+                            <span>Waveform: </span>
+                        </div>
+                        <div>
+                            <select name="waveform" onchange='handleOsc1WaveTypeChange(this.value)' value='osc1WaveType'>
+                                <option value="sine">Sine</option>
+                                <option value="square">Square</option>
+                                <option value="sawtooth">Sawtooth</option>
+                                <option value="triangle">Triangle</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span>Octave: </span>
+                        </div>
+                        <div>
+                            <select name="octave" onchange='handleOsc1OctaveChange(this.selectedIndex)' value='osc1Octave'>
+                                <option >32'</option>
+                                <option >16'</option>
+                                <option >8'</option>
+                                <option >4'</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span>Mix: </span>
+                        </div>
+                        <div>
+                            <input type="range" min="0.0" max="0.5" step="0.01"
+                                value="0.25" oninput="handleOsc1MixChange(this.value)" name="osc1Mix"/>
+                        </div>
+                        <div>
+                            <span>Detune: </span>
+                        </div>
+                        <div>
+                            <input type="range" min="-1200" max="1200" step="24"
+                                value="0" oninput="handleOsc1DetuneChange(this.value)" name="osc1Detune"/>   
+                        </div>
+                    </fieldset>
+                    <fieldset class="osc">
+                        <legend>Oscillator 2</legend>
+                        <div>
+                            <span>Waveform: </span>
+                        </div>
+                        <div>
+                            <select name="waveform" onchange='handleOsc2WaveTypeChange(this.value)' value='osc2WaveType'>
+                                <option value="sine">Sine</option>
+                                <option value="square">Square</option>
+                                <option value="sawtooth">Sawtooth</option>
+                                <option value="triangle">Triangle</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <span>Octave: </span>
+                        </div>
+                        <div>
+                            <select name="octave" onchange='handleOsc2OctaveChange(this.selectedIndex)' value='osc2Octave'>
+                                <option >32'</option>
+                                <option >16'</option>
+                                <option >8'</option>
+                                <option >4'</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <span>Mix: </span>
+                        </div>
+                        <div>
+                            <input type="range" min="0.0" max="0.5" step="0.01"
+                                value="0.25" oninput="handleOsc2MixChange(this.value)" name="osc2Mix"/>
+                        </div>
+                        <div>
+                            <span>Detune: </span>
+                        </div>
+                        <div>
+                            <input type="range" min="-1200" max="1200" step="24"
+                                value="0" oninput="handleOsc2DetuneChange(this.value)" name="osc2Detune"/>   
+                        </div>
+                        
+                    </fieldset>
+                    <fieldset class="filter">
+                        <legend>Filter </legend>
+                        <span>Cutoff: </span>
+                        <input type="range" min="50" max="22050" 
+                            value='255' oninput='handleCutoffChange(this.value)' name="cutoff"/>
+                        <span>Resonance: </span>
+                        <input type="range" min="0.0001" max="15" step="0.0001"
+                            value='2' oninput='handleResonanceChange(this.value)' name="resonance"/>
+                        <span>Master volume: </span>
+                        <input type="range" min="0" max="100" step="1"
+                            value='50' oninput='handleVolumeChange(this.value)' name="volume"/>
+                    </fieldset>
+                    <fieldset class="enveloppe">
+                        <legend>Filter enveloppe</legend>
+                        <span>Attack: </span>
+                        <input type="range" min="0" max="100" step="1"
+                            value='0' onchange='handleFilterAttackChange(this.value)' name="attackF"/>
+                        <span>Decay: </span>
+                        <input type="range" min="0" max="100" step="1"
+                            value='50' onchange='handleFilterDecayChange(this.value)' name="decayF"/>
+                        <span>Sustain: </span>
+                        <input type="range" min="0" max="100" step="1"
+                            value='50' onchange='handleFilterSustainChange(this.value)' name="sustainF"/>
+                        <span>Release: </span>
+                        <input type="range" min="0" max="100" step="1"
+                            value='5' onchange='handleFilterReleaseChange(this.value)' name="releaseF"/>
+                    </fieldset>
+                </div>
+                <div>
+                    <li id="k48" class="white c1" ></li>
+                    <li id="k49" class="black cs1"></li>
+                    <li id="k50" class="white d1"></li>
+                    <li id="k51" class="black ds1"></li>
+                    <li id="k52" class="white e1"></li>
+                    <li id="k53" class="white f1"></li>
+                    <li id="k54" class="black fs1"></li>
+                    <li id="k55" class="white g1"></li>
+                    <li id="k56" class="black gs1"></li>
+                    <li id="k57" class="white a1"></li>
+                    <li id="k58" class="black as1"></li>
+                    <li id="k59" class="white b1"></li>
+                    <li id="k60" class="white c2"></li>
+                    <li id="k61" class="black cs2"></li>
+                    <li id="k62" class="white d2"></li>
+                    <li id="k63" class="black ds2"></li>
+                    <li id="k64" class="white e2"></li>
+                    <li id="k65" class="white f2"></li>
+                    <li id="k66" class="black fs2"></li>
+                    <li id="k67" class="white g2"></li>
+                    <li id="k68" class="black gs2"></li>
+                    <li id="k69" class="white a2"></li>
+                    <li id="k70" class="black as2"></li>
+                    <li id="k71" class="white b2"></li>
+                    <li id="k72" class="white c3"></li>
+                    <li id="k73" class="black cs3"></li>
+                    <li id="k74" class="white d3"></li>
+                    <li id="k75" class="black ds3"></li>
+                    <li id="k76" class="white e3"></li>
+                    <li id="k77" class="white f3"></li>
+                    <li id="k78" class="black fs3"></li>
+                    <li id="k79" class="white g3"></li>
+                    <li id="k80" class="black gs3"></li>
+                    <li id="k81" class="white a3"></li>
+                    <li id="k82" class="black as3"></li>
+                    <li id="k83" class="white b3"></li>
+                </div>
+                </ul>
+            </div>
+        </div>
+        <ul>
+            
+        </ul>
+    </body>
+</html>
