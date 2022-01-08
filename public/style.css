@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: rgb(209, 209, 209);
+  font-family: Roboto, Helvetica, sans-serif;
 }
 
 ul.navbar {
@@ -27,7 +28,7 @@ ul.navbar li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-family: Roboto, Helvetica, sans-serif;
+  
   
 }
 
@@ -36,11 +37,20 @@ ul.navbar li a {
   font-size: 40px;
 }
 
+.nav-buttons{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 20%;
+  left: 85%;
+  width: 15%;
+}
+
 .button{
   color: white;
   background-color: #444;
   padding: 1em;
-  border: 1px white solid;
+  border: 1px rgb(146, 146, 146) solid;
   border-radius: 5px;
   margin: 0 1em;
   color: white;
@@ -48,14 +58,12 @@ ul.navbar li a {
   padding: 14px 16px;
   text-decoration: none;
   font-family: Roboto, Helvetica, sans-serif;
-  position: absolute;
-  top: 50%;
-  left: 73%;
-  transform: translate(220%, -50%);
+  width: 100%;
 }
 
 #logoutBtn {
   display: none;
+  left: 70%;
 }
 
 .button:hover{
@@ -63,17 +71,98 @@ ul.navbar li a {
   cursor: pointer;
 }
 
+.buttonSave{
+  color: white;
+  background-color: #444;
+  padding: 1em;
+  border: 1px rgb(146, 146, 146) solid;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: Roboto, Helvetica, sans-serif;
+
+}
+
+.buttonSave:hover{
+  background-color: #777;
+  cursor: pointer;
+}
+
+
+.body{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 
 .synth-container {
-  height:35em;
-  width:56.2em;
-  margin: auto;
+  height:550px;
+  width:900px;
+ 
   padding:1em 1em 0 1em;
   position: relative;
   border:1px solid #160801;
   border-radius: 1em;
   background:linear-gradient(to bottom right,rgba(22, 22, 22, 0.3),rgba(27, 26, 26, 0));
-  box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)
+  box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5);
+  
+}
+
+
+
+.preset-container {
+  height:550px;
+  width:200px;
+  margin-top:1em;
+  padding:1em 1em 0 1em;
+  position: relative;
+  border:1px solid #160801;
+  border-radius: 1em;
+  background:linear-gradient(to bottom right,rgba(22, 22, 22, 0.3),rgba(27, 26, 26, 0));
+  box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5);
+  display: none;
+}
+#preset-list{
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.preset-container2 {
+  width: 170px;
+  margin: 5px 0;
+  padding: 0 15px;
+  background-color: #555;
+  border-radius: 5px;
+  color: white;
+}
+
+.preset{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btnDelete{
+  background-color: #555;
+  padding: 0 10px;
+  color: rgb(199, 23, 23);
+}
+
+.btnDelete::before {
+  content: 'x'; 
+  color: #fff;
+  font-weight: 300;
+  font-family: Arial, sans-serif;
+  
+}
+
+.btnDelete:hover{
+  cursor: pointer;
 }
 
 li {
@@ -139,11 +228,11 @@ ul .white:active {
   margin: 0 0 0 -0.5em
 }
 
-ul li:first-child {
+#k48 {
   border-radius:5px 0 5px 5px;
 }
 
-ul li:last-child {
+#k83 {
   border-radius:0 5px 5px 5px
 }
 
@@ -259,7 +348,8 @@ ul li:last-child {
   float: left;
 }
 
-#firebaseui-auth-container {
+.modal {
+  font-family: Roboto, Helvetica, sans-serif;
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1000; /* Sit on top */
@@ -270,7 +360,31 @@ ul li:last-child {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 200px;
+  padding-top: 80px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+  padding: 1.5em;
+}
+
+h4{
+  text-align: center;
+  
+  font-size: 30px;
+  margin: 10px;
+}
+
+input[type=email], input[type=password] {
+  width: 100%;
+  padding: 12px 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: none;
+  box-sizing: border-box;
 }
 
 .animate {
@@ -286,5 +400,66 @@ ul li:last-child {
 @keyframes animatezoom {
   from {transform: scale(0)}
   to {transform: scale(1)}
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+}
+
+.btn1{
+  background:#1a1355;
+  width:49%;
+  padding-top:5px;
+  padding-bottom:5px;
+  color:white;
+  font-weight:800;
+  font-size:0.8em;
+  margin-top: 10px;
+  margin-bottom: 1em;
+  margin-right: 11px;
+  border-radius: 5px;
+}
+
+.btn1:hover{
+  background:#3628b8; 
+  cursor: pointer;
+}
+
+.btn2{
+  background:#661212;
+  width:49%;
+  padding-top:5px;
+  padding-bottom:5px;
+  color:white;
+  font-weight:800;
+  font-size:0.8em;
+  margin-top: 10px;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.btn2:hover{
+  background:#911f1f; 
+  cursor: pointer;
+}
+
+.btn3{
+  background:#000000;
+  width:100%;
+  padding-top:5px;
+  padding-bottom:5px;
+  color:white;
+  font-weight:800;
+  font-size:0.8em;
+  margin-top: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.btn3:hover{
+  background:#2c2c2c; 
+  cursor: pointer;
 }
 
