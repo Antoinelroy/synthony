@@ -42,7 +42,7 @@ ul.navbar li a {
   padding: 1em;
   border: 1px white solid;
   border-radius: 5px;
-  margin: 0 10px;
+  margin: 0 1em;
   color: white;
   text-align: center;
   padding: 14px 16px;
@@ -54,6 +54,10 @@ ul.navbar li a {
   transform: translate(220%, -50%);
 }
 
+#logoutBtn {
+  display: none;
+}
+
 .button:hover{
   background-color: #777;
   cursor: pointer;
@@ -61,7 +65,7 @@ ul.navbar li a {
 
 
 .synth-container {
-  height:36em;
+  height:35em;
   width:56.2em;
   margin: auto;
   padding:1em 1em 0 1em;
@@ -254,3 +258,33 @@ ul li:last-child {
   overflow: hidden;
   float: left;
 }
+
+#firebaseui-auth-container {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 200px;
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
