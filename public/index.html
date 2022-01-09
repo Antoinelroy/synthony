@@ -52,7 +52,7 @@
                             <span>Waveform: </span>
                         </div>
                         <div>
-                            <select name="waveform" onchange='handleOsc1WaveTypeChange(this.value)' value='osc1WaveType'>
+                            <select name="waveform" onchange='handleOsc1WaveTypeChange(this.value)' value='sine' id="osc1WaveType">
                                 <option value="sine">Sine</option>
                                 <option value="square">Square</option>
                                 <option value="sawtooth">Sawtooth</option>
@@ -63,7 +63,7 @@
                             <span>Octave: </span>
                         </div>
                         <div>
-                            <select name="octave" onchange='handleOsc1OctaveChange(this.selectedIndex)' value='osc1Octave'>
+                            <select name="octave" onchange='handleOsc1OctaveChange(this.selectedIndex)' value='1' id="osc1Octave">
                                 <option >32'</option>
                                 <option >16'</option>
                                 <option >8'</option>
@@ -75,14 +75,14 @@
                         </div>
                         <div>
                             <input type="range" min="0.0" max="0.5" step="0.01"
-                                value="0.25" oninput="handleOsc1MixChange(this.value)" name="osc1Mix"/>
+                                value="0.25" oninput="handleOsc1MixChange(this.value)" name="0.25" id="osc1Mix"/>
                         </div>
                         <div>
                             <span>Detune: </span>
                         </div>
                         <div>
                             <input type="range" min="-1200" max="1200" step="24"
-                                value="0" oninput="handleOsc1DetuneChange(this.value)" name="osc1Detune"/>   
+                                value="0" oninput="handleOsc1DetuneChange(this.value)" name="0" id="osc1Detune" />   
                         </div>
                     </fieldset>
                     <fieldset class="osc">
@@ -91,7 +91,7 @@
                             <span>Waveform: </span>
                         </div>
                         <div>
-                            <select name="waveform" onchange='handleOsc2WaveTypeChange(this.value)' value='osc2WaveType'>
+                            <select name="waveform" onchange='handleOsc2WaveTypeChange(this.value)' value='sine' id="osc2WaveType">
                                 <option value="sine">Sine</option>
                                 <option value="square">Square</option>
                                 <option value="sawtooth">Sawtooth</option>
@@ -103,7 +103,7 @@
                             <span>Octave: </span>
                         </div>
                         <div>
-                            <select name="octave" onchange='handleOsc2OctaveChange(this.selectedIndex)' value='osc2Octave'>
+                            <select name="octave" onchange='handleOsc2OctaveChange(this.selectedIndex)' value='0' id="osc2Octave">
                                 <option >32'</option>
                                 <option >16'</option>
                                 <option >8'</option>
@@ -116,14 +116,14 @@
                         </div>
                         <div>
                             <input type="range" min="0.0" max="0.5" step="0.01"
-                                value="0.25" oninput="handleOsc2MixChange(this.value)" name="osc2Mix"/>
+                                value="0.25" oninput="handleOsc2MixChange(this.value)" name="osc2Mix" id="osc2Mix"/>
                         </div>
                         <div>
                             <span>Detune: </span>
                         </div>
                         <div>
                             <input type="range" min="-1200" max="1200" step="24"
-                                value="0" oninput="handleOsc2DetuneChange(this.value)" name="osc2Detune"/>   
+                                value="0" oninput="handleOsc2DetuneChange(this.value)" name="osc2Detune" id="osc2Detune"/>   
                         </div>
                         
                     </fieldset>
@@ -131,28 +131,28 @@
                         <legend>Filter </legend>
                         <span>Cutoff: </span>
                         <input type="range" min="50" max="22050" 
-                            value='255' oninput='handleCutoffChange(this.value)' name="cutoff"/>
+                            value='255' oninput='handleCutoffChange(this.value)' name="cutoff" id="cutoff" />
                         <span>Resonance: </span>
                         <input type="range" min="0.0001" max="15" step="0.0001"
-                            value='2' oninput='handleResonanceChange(this.value)' name="resonance"/>
+                            value='2' oninput='handleResonanceChange(this.value)' name="resonance" id="resonance"/>
                         <span>Master volume: </span>
                         <input type="range" min="0" max="100" step="1"
-                            value='50' oninput='handleVolumeChange(this.value)' name="volume"/>
+                            value='50' oninput='handleVolumeChange(this.value)' name="volume" id="volume"/>
                     </fieldset>
                     <fieldset class="enveloppe">
                         <legend>Filter enveloppe</legend>
                         <span>Attack: </span>
                         <input type="range" min="0" max="100" step="1"
-                            value='0' onchange='handleFilterAttackChange(this.value)' name="attackF"/>
+                            value='0' onchange='handleFilterAttackChange(this.value)' name="attackF" id="attackF"/>
                         <span>Decay: </span>
                         <input type="range" min="0" max="100" step="1"
-                            value='50' onchange='handleFilterDecayChange(this.value)' name="decayF"/>
+                            value='50' onchange='handleFilterDecayChange(this.value)' name="decayF" id="decayF"/>
                         <span>Sustain: </span>
                         <input type="range" min="0" max="100" step="1"
-                            value='50' onchange='handleFilterSustainChange(this.value)' name="sustainF"/>
+                            value='50' onchange='handleFilterSustainChange(this.value)' name="sustainF" id="sustainF"/>
                         <span>Release: </span>
                         <input type="range" min="0" max="100" step="1"
-                            value='5' onchange='handleFilterReleaseChange(this.value)' name="releaseF"/>
+                            value='5' onchange='handleFilterReleaseChange(this.value)' name="releaseF" id="releaseF"/>
                     </fieldset>
                 </div>
                 <div>
@@ -200,7 +200,7 @@
                 <ul id="preset-list">
 
                 </ul>
-                <a class="buttonSave" onclick="saveSound()">Save preset</a>
+                <a class="buttonSave" onclick="saveSound()">Save new preset</a>
             </div>
         </div>
         <div id="modal-login" class="modal">
@@ -241,8 +241,16 @@
               </div>
 
           </div>
+
+          <div class="modal" id="loadOrDeletePreset">
+              <div class="modal-content animate">
+                  <h4>What do you want to do with this preset?</h4>
+                  <button class="button" id="btnLoad">Load preset</button>
+                  <button class="button" id="btnDelete">Delete preset</button>
+              </div>
+          </div>
         <script type="text/javascript" src="synth.js"></script>
-        <script type="text/javascript" src="login.js"></script>
         <script type="text/javascript" src="savesound.js"></script>
+        <script type="text/javascript" src="login.js"></script>
     </body>
 </html>

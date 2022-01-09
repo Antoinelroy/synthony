@@ -134,12 +134,17 @@ ul.navbar li a {
 }
 
 .preset-container2 {
-  width: 170px;
+  width: 100%;
   margin: 5px 0;
-  padding: 0 15px;
+  padding: 15px 0;
   background-color: #555;
   border-radius: 5px;
   color: white;
+}
+
+.preset-container2:hover {
+  background-color: #777;
+  cursor: pointer;
 }
 
 .preset{

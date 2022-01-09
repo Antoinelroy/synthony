@@ -14,6 +14,8 @@ function saveSound(){
 
       if(user){
 
+        //let numberOfPresets = db.collection('synth-presets').where('user-id', '==', user.uid).length();
+
         db.collection('synth-presets').add({
             'user-id': user.uid,
             'preset-name': presetName,

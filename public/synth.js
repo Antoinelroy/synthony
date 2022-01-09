@@ -7,7 +7,7 @@ let volume = 0.5;
 let cutoff = 255;
 let resonance = 2;
 let osc1WaveType = 'sine';
-let osc1Octave = 0;
+let osc1Octave = 1;
 let osc1Mix = 0.25;
 let osc1Detune = 0;
 
@@ -77,14 +77,6 @@ setup = () => {
     isMobile = (navigator.userAgent.indexOf("Android")!=-1)||(navigator.userAgent.indexOf("iPad")!=-1)||(navigator.userAgent.indexOf("iPhone")!=-1);
 
     effectChain = audioContext.createGain();
-
-    /*volNode = audioContext.createGain();
-    volNode.gain.value = volume;
-    compressor = audioContext.createDynamicsCompressor();
-    
-    volNode.connect( compressor );
-    compressor.connect(	effectChain );*/
-    //handleVolumeChange( {currentTarget:{value:volume}} );
 
     let keysToClick = document.getElementsByTagName("li");
 
@@ -310,6 +302,7 @@ function Voice(note) {
     //this.osc2Gain.connect(audioContext.destination);
     
     //console.log("cutoff: " + cutoff);
+    //console.log("osc1WaveType: " + osc1WaveType);
     
     this.osc1.connect(this.osc1Gain);
     this.osc2.connect(this.osc2Gain);
