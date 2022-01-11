@@ -1,6 +1,7 @@
 
 
 var div = document.getElementById("modal-login");
+var signupdiv = document.getElementById("modal-signup");
 var loginBtn = document.getElementById("loginBtn");
 var logoutBtn = document.getElementById("logoutBtn");
 var presetContainer = document.getElementById("preset-container");
@@ -32,7 +33,7 @@ auth.onAuthStateChanged(user =>{
     presetContainer.style.display = "flex";
     presetContainer.style['flex-direction'] = "column";
 
-    db.collection('synth-presets').get().then(snapshot => {
+    db.collection('synth-presets').where('user-id', '==', user.uid).onSnapshot(snapshot => {
       setupPresets(snapshot);
     });
 
@@ -45,7 +46,25 @@ auth.onAuthStateChanged(user =>{
 })
 
 
+function signup(){
+  div.style.display = "none";
+  signupdiv.style.display = "block";
+  window.removeEventListener("keydown", handleKeydown);
 
+  const signupForm = document.getElementById("signup-form");
+
+  signupForm.addEventListener("submit", (e) =>{
+      e.preventDefault();
+
+      const email = signupForm['signup-email'].value;
+      const password = signupForm['signup-password'].value;
+
+      auth.createUserWithEmailAndPassword(email,password).then(cred =>{
+        signupdiv.style.display = "none";
+        window.addEventListener("keydown", handleKeydown);
+      })
+    })
+}
 
 function login() {
     
@@ -73,6 +92,8 @@ function logout(){
 
 function cancel(){
   div.style.display = "none";
+  loadOrDeleteDiv.style.display = "none";
+  signupdiv.style.display = "none";
   window.addEventListener("keydown", handleKeydown);
 }
 
@@ -156,11 +177,18 @@ const handleLoad = (itemid) => {
 }
 
 const handleDelete = (itemid) => {
-  db.collection('synth-presets').doc(itemid).delete().then(() =>{
-    console.log("preset deleted.");
-  }).catch((error) => {
-    console.error("Error deleting preset: ", error);
-  })
+
+  if (confirm("Are you sure?") == true) {
+    db.collection('synth-presets').doc(itemid).delete().then(() =>{
+      console.log("preset deleted.");
+      loadOrDeleteDiv.style.display = "none";
+    }).catch((error) => {
+      console.error("Error deleting preset: ", error);
+    })
+  } else {
+    loadOrDeleteDiv.style.display = "none";
+  }
+  
   btnDelete.removeEventListener('click', handleDelete);
 }
 

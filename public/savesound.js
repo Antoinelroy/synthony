@@ -11,7 +11,7 @@ function saveSound(){
 
       e.preventDefault();
       const presetName = presetForm['preset-name'].value;
-
+      
       if(user){
 
         //let numberOfPresets = db.collection('synth-presets').where('user-id', '==', user.uid).length();
@@ -38,14 +38,19 @@ function saveSound(){
         alert('preset saved successfully!');
         presetDiv.style.display = "none";
 
-    } else {
-        alert('You have to be logged in to save a preset!')
-    }
-
-
+    } 
     })
-
-    
-    
-    
 }
+
+function cancelSaveSound(){
+    presetDiv.style.display = "none";
+    window.addEventListener("keydown", handleKeydown);
+
+}
+
+window.onmousedown = function(event) {
+    if (event.target == presetDiv) {
+        presetDiv.style.display = "none";;
+        window.addEventListener("keydown", handleKeydown);
+    }
+  }

@@ -140,7 +140,7 @@
                             value='50' oninput='handleVolumeChange(this.value)' name="volume" id="volume"/>
                     </fieldset>
                     <fieldset class="enveloppe">
-                        <legend>Filter enveloppe</legend>
+                        <legend>Volume envelope</legend>
                         <span>Attack: </span>
                         <input type="range" min="0" max="100" step="1"
                             value='0' onchange='handleFilterAttackChange(this.value)' name="attackF" id="attackF"/>
@@ -217,11 +217,31 @@
                 </div>
                 <div class="buttons">
                   <button class="btn1">Login</button>
-                  <button class="btn2" onclick="cancel()">Cancel</button>
+                  <button class="btn2" onclick="cancel()" type="button">Cancel</button>
                 </div>
                 <span>No account?</span>
-                <button class="btn3">Sign up here</button>
+                <button class="btn3" onclick="signup()" type="button">Sign up here</button>
                 
+              </form>
+            </div>
+          </div>
+
+          <div id="modal-signup" class="modal">
+            <div class="modal-content animate">
+              <h4>Sign up</h4>
+              <form id="signup-form">
+                <div class="input-field">
+                  <label for="signup-email">Email address</label>
+                  <input type="email" id="signup-email" name="email" required />
+                </div>
+                <div class="input-field">
+                  <label for="signup-password">Your password</label>
+                  <input type="password" id="signup-password" name="password" required />
+                </div>
+                <div class="buttons">
+                  <button class="btn1">Sign up</button>
+                  <button class="btn2" onclick="cancel()" type="button">Cancel</button>
+                </div>
               </form>
             </div>
           </div>
@@ -235,7 +255,7 @@
                   </div>
                   <div class="buttons">
                     <button class="btn1">Save</button>
-                    <button class="btn2" onclick="cancel()">Cancel</button>
+                    <button class="btn2" onclick="cancelSaveSound()" type="button">Cancel</button>
                   </div>
                 </form>
               </div>
@@ -245,8 +265,11 @@
           <div class="modal" id="loadOrDeletePreset">
               <div class="modal-content animate">
                   <h4>What do you want to do with this preset?</h4>
-                  <button class="button" id="btnLoad">Load preset</button>
-                  <button class="button" id="btnDelete">Delete preset</button>
+                  <div class="buttons">
+                    <button class="button" id="btnLoad">Load preset</button>
+                    <button class="button" id="btnDelete">Delete preset</button>
+                  </div>
+                  
               </div>
           </div>
         <script type="text/javascript" src="synth.js"></script>
